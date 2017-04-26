@@ -16,8 +16,8 @@ random.seed(123)
 ##########################################
 # User defined variables
 ##########################################
-TARGET = 'horse2zebra'
-MODEL_FILE = './models/horse2zebra/model.ckpt-20000'
+TARGET = '2Dand3D'
+MODEL_FILE = './log/2Dand3D/model.ckpt-11000'
 
 
 BATCH_SIZE = 1
@@ -31,8 +31,8 @@ if not os.path.exists(RESULT_B_DIR): os.makedirs(RESULT_B_DIR)
 #############################################3
 # Define Network
 #############################################3
-f_a,a = dataset.get_image_batch(A_DIR,BATCH_SIZE,300,256,train=False)
-f_b,b = dataset.get_image_batch(B_DIR,BATCH_SIZE,300,256,train=False)
+f_a,a = dataset.get_image_batch(A_DIR,BATCH_SIZE,64,64,train=False)
+f_b,b = dataset.get_image_batch(B_DIR,BATCH_SIZE,64,64,train=False)
 
 with tf.variable_scope('gen_a_to_b') as a_to_b_scope :
     b_gen = build_enc_dec(a)
