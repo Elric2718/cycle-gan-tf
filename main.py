@@ -159,11 +159,13 @@ try:
         for _ in xrange(NUM_CRITIC_TRAIN) :
             _ = sess.run(train_c_op)
         W_eval, GP_eval, loss_g_eval, loss_cycle_eval, _ = sess.run([W,GP,loss_g,loss_cycle,train_g_op])
+
 	s = '%7d : W : %1.6f, GP : %1.6f, Loss G : %1.6f, Loss Cycle : %1.6f'%(
             step,W_eval,GP_eval,loss_g_eval,loss_cycle_eval)
 	with open('log.txt', 'a') as f:
 	    f.write(s+'\n')
 	print(s)
+
         if( step % SUMMARY_PERIOD == 0 ) :
             summary_str = sess.run(summary_op)
             summary_writer.add_summary(summary_str,step)
